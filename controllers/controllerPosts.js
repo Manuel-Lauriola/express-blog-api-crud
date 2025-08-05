@@ -20,8 +20,23 @@ const show = (req, res) => {
             res.status(404).json({ error: "Post non trovato" });
         }
   }
+  //destroy
+  const destroy = (req, res) => {
+    const id = parseInt(req.params.id)
+    //trovo l'oggetto da eliminare
+    const post = posts.find(item => item.id === id)
+    //se esiste lo elimino
+    if (post) {
+      posts.splice(posts.indexOf(post), 1)
+      res.sendStatus(204)
+    }
+      else {
+        res.status(404).json({error: "Post non trovato"})
+      }
+  }
 
   module.exports = {
     index,
-    show
+    show,
+    destroy
   }

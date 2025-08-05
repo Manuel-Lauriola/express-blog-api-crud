@@ -11,6 +11,6 @@ router.get('/', index);
 router.get('/:id', show);
 // router.post('/', store);
 // router.put('/:id', update);
-// router.delete('/:id', destroy);
+router.delete('/:id', destroy);
 //esporto il router
 module.exports = router
