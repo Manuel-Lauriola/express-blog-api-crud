@@ -50,8 +50,22 @@ const show = (req, res) => {
   }
 //store
   const store = (req, res) => {
-   console.log(req.body)
-   res.send(`creazione di un nuovo post`)
+   //genero l'id successivo prendendo l'id dell'ultimo elemento
+   const newId = posts[posts.length -1].id +1
+   //recupero i dati del post da inserire dalla richiesta
+   const {title, content, image, tags} = req.body
+   //creo il post
+   const newPost = {
+    id : newId,
+    title,
+    content,
+    image,
+    tags
+   }
+   //pusho il nuovo post
+   posts.push(newPost)
+   // Deve rispondere con lo stato 201 e il nuovo post in formato JSON
+    res.status(201).json(newPost)
   }
 
   module.exports = {
