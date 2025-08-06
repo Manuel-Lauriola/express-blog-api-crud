@@ -74,12 +74,17 @@ const show = (req, res) => {
     const {title, content, image, tags} = req.body
     //con find trovo il post con l'id della richiesta
     const post = posts.find(item => item.id === id)
+    //verifico se il post da modificare esiste
+    if (!post) {
+    res.status(404).json({error: "Post non trovato"})
+    return
+    }
     //sostituisco i parametri del post con quelli recuperati
     post.title = title
     post.content = content
     post.image = image
     post.tags = tags
-    res.send(post)
+    res.json(post)
   }
 
   module.exports = {
