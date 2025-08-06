@@ -68,9 +68,24 @@ const show = (req, res) => {
     res.status(201).json(newPost)
   }
 
+  const update = (req, res) => {
+    const id = parseInt(req.params.id)
+    //recupero i dati dalla request body
+    const {title, content, image, tags} = req.body
+    //con find trovo il post con l'id della richiesta
+    const post = posts.find(item => item.id === id)
+    //sostituisco i parametri del post con quelli recuperati
+    post.title = title
+    post.content = content
+    post.image = image
+    post.tags = tags
+    res.send(post)
+  }
+
   module.exports = {
     index,
     show,
     destroy,
-    store
+    store,
+    update
   }
