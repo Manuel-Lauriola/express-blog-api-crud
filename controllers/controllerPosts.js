@@ -4,7 +4,21 @@ const posts = require('../posts')
 //definisco la funzione che prenderà a carico la richiesta
 //index
 const index = (req, res) => {
-   res.json(posts)
+  //estraggo il parametro tag dalla query string col destructuring
+  const tag = req.query.tag
+  //inizializzo l'array 
+  let filteredPosts = posts
+  //se tag esiste
+  if (tag) {
+    //filtro l'array
+    filteredPosts = posts.filter(item => {
+      // Per ogni post creo un nuovo array di tag in minuscolo
+      const loweredTags = item.tags.map(tag => tag.toLowerCase())
+      //faccio il return dei post che includono il tag della query
+      return loweredTags.includes(tag.toLowerCase())
+    }
+  )}
+  res.json(filteredPosts)
  }
 //show
 const show = (req, res) => {
