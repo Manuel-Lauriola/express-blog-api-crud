@@ -10,7 +10,7 @@ const { index, show, store, update, destroy } = require('../controllers/controll
 router.get('/', index);
 router.get('/:id', show);
 router.post('/', store);
-// router.put('/:id', update);
+router.put('/:id', update);
 router.delete('/:id', destroy);
 //esporto il router
 module.exports = router
