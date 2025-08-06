@@ -9,6 +9,8 @@ const port = 3000
 const postsRouter = require(`./routers/routerPosts`)
 //inserisco il middleware per i file statici
 app.use(express.static(`./imgs`))
+//il middleware per permettere l'interpretazione del body
+app.use(express.json())
 //utilizzo il file routers per definire le rotte
 app.use(`/posts`, postsRouter)
 //dico al server di rimanere in ascolto

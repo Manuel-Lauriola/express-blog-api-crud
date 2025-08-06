@@ -48,9 +48,15 @@ const show = (req, res) => {
         res.status(404).json({error: "Post non trovato"})
       }
   }
+//store
+  const store = (req, res) => {
+   console.log(req.body)
+   res.send(`creazione di un nuovo post`)
+  }
 
   module.exports = {
     index,
     show,
-    destroy
+    destroy,
+    store
   }

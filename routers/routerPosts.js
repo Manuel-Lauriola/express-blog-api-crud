@@ -9,7 +9,7 @@ const { index, show, store, update, destroy } = require('../controllers/controll
 // Associo ogni rotta alla sua funzione
 router.get('/', index);
 router.get('/:id', show);
-// router.post('/', store);
+router.post('/', store);
 // router.put('/:id', update);
 router.delete('/:id', destroy);
 //esporto il router
