@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(`/posts`, postsRouter)
 //utilizzo i 2 middleware
 app.use(notFound)
-// app.use(errorsHandler)
+app.use(errorsHandler)
 //dico al server di rimanere in ascolto
 app.listen(port, () => {
   console.log(`server in ascolto sulla porta ${port}`)
